@@ -21,7 +21,10 @@ type CounterAction =
 
 export const increase = () => ({ type: INCREASE })
 export const decrease = () => ({ type: DECREASE })
-export const increaseBy = (diff:number) => ({ type: INCREASE_BY })
+export const increaseBy = (diff:number) => ({ 
+  type: INCREASE_BY,
+  plyload: diff
+ })
 
 // 리듀서
 export default function counter( 
@@ -34,7 +37,7 @@ export default function counter(
       case 'redux_ducks/counter/DECREASE':
         return { count : state.count - 1 };
       case 'redux_ducks/counter/INCREASE_BY':
-        return { count : state.count + action.payload };
+        return { count : state.count + action.plyload  };
       default:
         return state;
     };
